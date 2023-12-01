@@ -65,3 +65,66 @@ Prevenir comportamentos padrão de elementos HTML, como o recarregamento da pág
 
 ### Aula 02 - Criando uma tarefa - Video 1
 
+Nesta aula, o instrutor ensina como criar uma tarefa utilizando JavaScript. Ele mostra um trecho de código HTML que representa a estrutura de uma tarefa e explica que o objetivo é criar uma função em JavaScript que retorne o HTML correspondente a essa tarefa. O instrutor mostra passo a passo como criar os elementos HTML dinamicamente, como o <li>, <svg>, <p> e <button>, e como adicionar classes, conteúdo e atributos a esses elementos. Ele ressalta que o foco é o JavaScript e não o HTML e CSS. No final, o instrutor menciona que o próximo passo é testar as linhas de código escritas e criar as tarefas correspondentes a partir do localStorage.
+
+### Aula 02 - Lendo tarefas gravadas - Video 2
+
+Nesta aula, o instrutor aborda a leitura de tarefas gravadas no localStorage. Ele explica como verificar se a lista de tarefas existe no localStorage, como converter a string retornada em um objeto JavaScript e como percorrer essa lista utilizando o método forEach(). Também é mostrado como criar elementos HTML para cada tarefa e adicioná-los corretamente à lista no DOM. O instrutor destaca a importância de separar as responsabilidades das funções e sugere a depuração para identificar possíveis problemas.
+
+### Aula 02 - Escondendo o formulário - Video 3
+
+Nesta aula, o instrutor abordou a correção do estilo da lista de tarefas, a remoção de elementos desnecessários, a adição de classes CSS aos elementos e a adição de uma nova tarefa à lista. Ele mostrou como resolver problemas de estilo, como adicionar funcionalidades e como limpar o campo de texto do formulário após adicionar uma tarefa.
+
+### Aula 02 - Para saber mais: além do append - Outros métodos do DOM
+
+1 - .append():  
+Bastante utilizado durante o curso, esse método permite adicionar múltiplos nós e/ou strings de texto ao final de um elemento. Se você passar uma string, o método a trata como um texto e a adiciona diretamente.
+
+2 - .appendChild():  
+É um método mais antigo e é específico para inserir um único nó no final do elemento selecionado. Diferentemente do .append(), o .appendChild() não aceita strings diretamente. Se você quiser adicionar uma string, precisa criar um nó de texto primeiro.
+
+Por que é útil conhecer ambos?  
+Enquanto .append() oferece mais flexibilidade, permitindo inserir múltiplos elementos e/ou texto, .appendChild() tem amplo suporte e é mais específico na sua tarefa.  
+
+3 - .prepend():  
+Esse método insere conteúdo no início de um elemento selecionado.
+
+Por que é útil?  
+Se você deseja adicionar algo no topo de uma lista ou no começo de um container, esta é a função a ser usada.
+
+4 - .insertBefore():  
+Permite inserir um elemento, especificamente, antes de outro elemento.
+
+Por que é útil?  
+É muito útil quando você precisa inserir um item em uma posição específica, e não apenas no começo ou fim.
+
+5 - .insertAdjacentElement(), .insertAdjacentHTML() e .insertAdjacentText():  
+Oferecem controle preciso sobre onde você deseja inserir um novo elemento, seja ele um texto, HTML ou elemento, em relação a um elemento existente.
+
+Por que é útil?  
+Permitem inserções em quatro posições diferentes: antes, depois, no início ou no final do elemento selecionado.
+
+6 - .replaceChild():  
+Substitui um elemento filho por outro.
+
+Por que é útil?  
+Se você precisa atualizar ou trocar um elemento por um novo, você pode usar este método.
+
+7 - .cloneNode():  
+Duplica um elemento. Exemplo:  
+let item = document.querySelector("li");
+let itemDuplicado = item.cloneNode(true); // Com "true" ele copia todos os filhos do item.
+document.querySelector("ul").appendChild(itemDuplicado);
+
+Por que é útil?  
+Se você precisa de uma cópia exata de um elemento (com ou sem seus filhos), este método é perfeito.
+
+### Aula 02 - Nessa aula, você aprendeu como:
+
+Utilizar o localStorage para armazenar e recuperar dados, permitindo persistência entre sessões;
+Criar elementos utilizando o document.createElement;
+Aninhar elementos utilizando o método append.
+
+## Aula 03 - 
+
+### Aula 03 -  - Video 1
