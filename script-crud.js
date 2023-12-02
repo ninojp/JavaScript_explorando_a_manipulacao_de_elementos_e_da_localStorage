@@ -6,8 +6,11 @@ const textArea = document.querySelector('.app__form-textarea');
 const ulTarefas = document.querySelector('.app__section-task-list');
 const btnCancelarTarefa = document.querySelector('.app__form-footer__button--cancel');
 const pDescricaoTarefa = document.querySelector('.app__section-active-task-description');
+const btnRemoverTarefasConcluidas = document.getElementById('btn-remover-concluidas');
+// const btnRemoverTarefasConcluidas = document.querySelector('#btn-remover-concluidas');
+const btnRemoverTodasTarefas = document.getElementById('btn-remover-todas');
 
-const listaTarefas = JSON.parse(localStorage.getItem('localStoreTarefas')) || [];
+let listaTarefas = JSON.parse(localStorage.getItem('localStoreTarefas')) || [];
 
 let tarefaSelecionada = null;
 let liTarefaSelecionada = null;
@@ -53,20 +56,25 @@ function criarElementoTarefa(objTarefa) {
     liElement.append(pElement);
     liElement.append(btnElement);
 
-    liElement.onclick = () => {
-        document.querySelectorAll('.app__section-task-list-item-active').forEach((itemList) => {
-            itemList.classList.remove('app__section-task-list-item-active')});
-        if(tarefaSelecionada === objTarefa){
-            pDescricaoTarefa.textContent = '';
-            tarefaSelecionada = null;
-            liTarefaSelecionada = null;
-            return
-        }
-        tarefaSelecionada = objTarefa;
-        liTarefaSelecionada = liElement;
-        pDescricaoTarefa.textContent = objTarefa.descricao;
-        liElement.classList.add('app__section-task-list-item-active');
-    };
+    if(objTarefa.completa){
+        liElement.classList.add('app__section-task-list-item-complete');
+        btnElement.setAttribute('disabled', 'disabled');
+    }else{
+        liElement.onclick = () => {
+            document.querySelectorAll('.app__section-task-list-item-active').forEach((itemList) => {
+                itemList.classList.remove('app__section-task-list-item-active')});
+            if(tarefaSelecionada === objTarefa){
+                pDescricaoTarefa.textContent = '';
+                tarefaSelecionada = null;
+                liTarefaSelecionada = null;
+                return
+            }
+            tarefaSelecionada = objTarefa;
+            liTarefaSelecionada = liElement;
+            pDescricaoTarefa.textContent = objTarefa.descricao;
+            liElement.classList.add('app__section-task-list-item-active');
+        };
+    }
     return liElement;
 }
 
@@ -100,6 +108,21 @@ document.addEventListener('focoFinalizado', () => {
     if(tarefaSelecionada && liTarefaSelecionada){
         liTarefaSelecionada.classList.remove('app__section-task-list-item-active');
         liTarefaSelecionada.classList.add('app__section-task-list-item-complete');
-        liTarefaSelecionada.querySelector('button').setAttribute('disabled', 'disabled')
+        liTarefaSelecionada.querySelector('button').setAttribute('disabled', 'disabled');
+        tarefaSelecionada.completa = true;
+        atualizarTarefas();
     }
-})
+});
+
+const removerTarefas = (somenteCompletas) => {
+    const seletor = somenteCompletas ? ".app__section-task-list-item-complete" : ".app__section-task-list-item";
+    document.querySelectorAll(seletor).forEach(elementTarefa => { 
+        elementTarefa.remove() });
+    listaTarefas = somenteCompletas ? listaTarefas.filter(tarefaCompleta => !tarefaCompleta.completa ) : [];
+    atualizarTarefas();
+};
+//Quando passamos o nome de uma função SEM "()", estamos apenas atribuindo 
+//Quando passamos o nome de uma função COM "()", estamos EXECUTANDO a função
+//Pelo q entendi para não executar diretamento foi criado uma ARROW FUNCTION e dentro dela executa, removerTarefas()
+btnRemoverTarefasConcluidas.onclick = () => removerTarefas(true);
+btnRemoverTodasTarefas.onclick = () => removerTarefas(false);

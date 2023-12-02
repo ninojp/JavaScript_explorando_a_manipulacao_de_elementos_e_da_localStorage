@@ -192,7 +192,81 @@ Desenvolvemos uma lógica para permitir que os usuários cliquem e selecione/des
 Trabalhamos com a criação e resposta a eventos personalizados, como o evento FocoFinalizado, que é usado para marcar uma tarefa como concluída;
 Melhoramos a experiência do usuário ao fornecer feedback visual sobre a tarefa selecionada e a capacidade de marcar uma tarefa como concluída.
 
-## Aula 05 - 
+## Aula 05 - Removendo Tarefas
 
-### Aula 05 -  - Video 1
+### Aula 05 - Corrigindo bugs - Video 1
 
+Nesta aula, o instrutor aborda a necessidade de atualizar o local storage da aplicação para persistir o estado das tarefas completadas mesmo após a recarga da página. São mostrados trechos de código onde são adicionados event listeners para tratar o evento "FocoFinalizado" e o clique em um item de tarefa. Também são feitas modificações no código para adicionar classes, desabilitar botões e atualizar propriedades das tarefas selecionadas. Essas modificações são suficientes para persistir a informação de tarefa completa no local storage e recuperá-la corretamente ao recarregar a página. O instrutor faz um teste selecionando uma tarefa e ao recarregar a página, a tarefa continua marcada como completa, indicando que a informação foi persistida corretamente.
+
+### Aula 05 - Removendo tarefas finalizadas - Video 2
+
+Nesta aula, o instrutor mostra como implementar um menu de contexto no aplicativo Fokus. Esse menu oferece duas opções: limpar as tarefas concluídas ou limpar todas as tarefas. O instrutor explica como selecionar o botão correspondente no HTML e adicionar um evento onclick a ele. Dentro da função onclick, ele utiliza o método querySelectorAll para selecionar todas as tarefas concluídas e remove-las do DOM. Além disso, ele também mostra como atualizar a lista de tarefas na local storage, filtrando apenas as tarefas que não estão completas. O instrutor menciona um erro na linha 122 do código e explica como corrigi-lo. Por fim, ele testa a funcionalidade no navegador e verifica que as tarefas concluídas são removidas tanto do DOM quanto da local storage.
+
+### Aula 05 - Removendo todas as tarefas - Video 3
+
+Nesta aula, o instrutor ensina como implementar a funcionalidade de remover todas as tarefas em uma aplicação chamada Fokus. A abordagem utilizada é criar uma constante chamada "removerTarefas" e associá-la à função que estava no "onclick" do botão de remover concluídas. Agora, ao clicar no botão de remover todas as tarefas, a função "removerTarefas" é executada. Essa função remove os elementos da lista de tarefas que estão marcados como completos e atualiza a lista. Com essa implementação, a aplicação Fokus fica mais robusta, permitindo a remoção de todos os itens ou apenas dos itens completos.
+
+### Aula 05 - Para saber mais: conceitos importantes para o funcionamento do Fokus
+
+A Diferença entre btnRemoverConcluidas.onclick = () => removerTarefas(true) e btnRemoverConcluidas.onclick = removerTarefas
+btnRemoverConcluidas.onclick = () => removerTarefas(true)
+Ao usar esta sintaxe, estamos definindo o evento de clique do botão para uma função anônima (uma função sem nome) que, quando chamada, executará a função removerTarefas com o argumento true.
+
+Uma maneira simples de entender isso é imaginar que estamos dizendo ao botão: "Quando você for clicado, quero que você execute essa pequena função para mim. E essa pequena função chamará removerTarefas passando true (ou false, como vimos em aula)."
+
+btnRemoverConcluidas.onclick = removerTarefas
+Usando esta sintaxe, estamos diretamente atribuindo o evento de clique do botão à função removerTarefas. Isso significa que, quando o botão for clicado, ele tentará chamar a função removerTarefas com qualquer argumento que o evento de clique forneça (normalmente um objeto de evento).
+
+No nosso contexto, isso causaria um problema porque a função removerTarefas espera um argumento específico (somenteCompletas). Ao atribuir diretamente a função removerTarefas, não estamos garantindo que ela será chamada com os argumentos corretos.
+
+Então, por que usamos a primeira sintaxe?
+
+Nós queremos especificar exatamente como e com quais argumentos a função removerTarefas será chamada. Ao usar a função anônima com () =>, temos controle total sobre a chamada da função, garantindo que ela seja chamada da maneira que desejamos.
+
+### Aula 05 - Para saber mais: métodos que buscam elementos
+
+- document.querySelector(seletor): retorna o primeiro elemento do DOM que corresponde ao seletor especificado. Se nenhum elemento for encontrado, retorna null.
+  - Por exemplo: ao usar document.querySelector("#lista"), será retornado o primeiro elemento que possuir o id lista.
+- document.querySelectorAll(seletor): retorna uma coleção (NodeList) de todos os elementos do DOM que correspondem ao seletor  especificado. Se nenhum elemento for encontrado, retorna uma coleção vazia.
+  - Por exemplo: document.querySelectorAll(".texto-principal"), retorna todos os elementos com classe texto-principal.
+
+- Seletores de tipo: selecionam elementos pelo nome da tag HTML, como p, div, img, etc.
+- Seletores de classe: selecionam elementos pelo valor do atributo class, usando o prefixo ”.” antes do nome da classe, como .produto, .carrinho, .botao, etc.
+- Seletores de id: selecionam elementos pelo valor do atributo id, usando o prefixo ”#” antes do nome do id, como #total, #lista, #confirmacao, etc.
+- Seletores de atributo: selecionam elementos pelo valor de qualquer atributo HTML, usando colchetes [ ] para delimitar o nome e o valor do atributo, como [href="https://www.bing.com"], [alt="Logo da loja"], [data-id="123"], etc.
+- Seletores combinados: selecionam elementos que atendem a mais de um critério, usando combinadores como espaço (descendente), > (filho direto), + (irmão adjacente), ~ (irmão geral), etc. Por exemplo, .produto > img seleciona todas as imagens que são filhas diretas de elementos com a classe produto.
+
+- getElementById(id): é fornecido por este método um elemento do DOM que tem o valor do atributo id igual ao parâmetro passado.
+  - Por exemplo, document.getElementById("total") retorna o elemento que tem id="total". Esse método é útil para selecionar elementos únicos, pois o valor do id deve ser exclusivo na página.
+- getElementsByTagName(tag): este método retorna uma coleção (HTMLCollection) de elementos do DOM que têm o nome da tag HTML igual ao parâmetro passado.
+  - Por exemplo, document.getElementsByTagName("p") retorna todos os elementos <p> da página. Este método é útil para selecionar elementos por tipo, como parágrafos, imagens, links, etc.
+- getElementsByClassName(classe): este método retorna uma coleção (HTMLCollection) de elementos do DOM que têm o valor do atributo class igual ao parâmetro passado.
+  - Por exemplo, document.getElementsByClassName("produto") retorna todos os elementos que têm class="produto". Esse método é útil para selecionar elementos por classe, que é um atributo que pode ser usado para definir o estilo ou a funcionalidade dos elementos.
+- elementFromPoint(coordenada x, coordenada y): este método retorna o elemento do DOM que está localizado nas coordenadas x e y especificadas na janela de visualização.
+  - Por exemplo, document.elementFromPoint(100, 200) retorna o elemento que está na posição 100 pixels da esquerda e 200 pixels do topo da janela. Este método é útil para selecionar elementos com base na sua posição na tela.
+- elementsFromPoint(coordenada x, coordenada y): este método retorna uma coleção (Array) de elementos do DOM que estão localizados nas coordenadas x e y especificadas na janela de visualização, ordenados do mais próximo ao mais distante da superfície da tela.
+  - Por exemplo, document.elementsFromPoint(100, 200) retorna um array de elementos que estão na posição 100 pixels da esquerda e 200 pixels do topo da janela, incluindo os elementos que estão sobrepostos ou aninhados. Este método é útil para selecionar todos os elementos que estão em uma determinada posição na tela.
+
+No entanto, os seletores JavaScript também têm algumas limitações. Algumas delas são:
+
+- Eles são sensíveis a maiúsculas e minúsculas, ou seja, eles diferenciam letras maiúsculas e minúsculas. Por exemplo, ”.Produto” não é o mesmo que ”.produto”.
+- Não podem usar pseudo-elementos ou pseudo-classes CSS, como ::before, ::after, :hover, :checked, etc. Esses elementos e classes são usados para definir o estilo dos elementos HTML, mas não fazem parte do DOM.
+- Podem ter um impacto negativo na performance da página web, especialmente se forem usados de forma excessiva ou inadequada. Por exemplo, usar seletores muito complexos ou aninhados pode aumentar o tempo de busca dos elementos no DOM.
+
+Portanto, é importante que você use com cuidado e critério, seguindo as boas práticas de desenvolvimento web. Algumas dicas para isso são:
+
+- Use seletores simples e específicos, que identifiquem claramente os elementos que você quer selecionar.
+- Use seletores de id sempre que possível, pois eles são os mais rápidos e únicos.
+- Evite usar seletores universais (*) ou que dependam da ordem dos elementos no DOM, pois eles podem ser lentos ou imprecisos.
+- Cache os elementos selecionados em variáveis, para evitar buscar os mesmos elementos repetidamente no DOM.
+
+### Aula 05 Conclusão - Nessa aula, você aprendeu como:
+
+Entendemos como acessar e alterar elementos no DOM, uma habilidade fundamental para criar interações dinâmicas nas páginas web;
+Exploramos como capturar e responder a eventos como cliques e submissões de formulário, permitindo que nossa aplicação reaja às ações dos usuários;
+Aprendemos a manter e atualizar um estado local para nossa aplicação, usando a capacidade do localStorage para persistir tarefas e estados entre as sessões;
+Dominamos a arte de criar elementos dinamicamente no JavaScript e inseri-los no DOM, proporcionando uma atualização em tempo real da interface do usuário.
+
+### Aula 05 Conclusão - Video 4
+
+Nesta aula do curso "JavaScript: explorando a manipulação de elementos e da localStorage", os alunos tiveram a oportunidade de aprofundar seus conhecimentos em desenvolvimento web. Foram abordados tópicos como o uso de armazenamento local (local storage) para guardar e atualizar itens, a manipulação de dados em formato JSON, técnicas de depuração e debug, além do desafio de publicar o projeto na plataforma Vercel. O instrutor expressou sua felicidade em ter os alunos acompanhando o curso até o final e espera encontrá-los em um próximo curso.
