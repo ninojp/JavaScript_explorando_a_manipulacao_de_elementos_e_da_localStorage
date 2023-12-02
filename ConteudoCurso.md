@@ -166,6 +166,6 @@ Adicionar eventos de clique diretamente a um elemento com a propriedade onclick;
 Utilizar a função prompt para obter informações diretamente do usuário;
 Atualizar conteúdo textual de um elemento DOM dinamicamente.
 
-## Aula 04 - 
+## Aula 04 - Integrando com o cronômetro
 
-### Aula 04 -  - Video 1
+### Aula 04 - Selecionando uma tarefa - Video 1
