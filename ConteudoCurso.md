@@ -169,3 +169,30 @@ Atualizar conteúdo textual de um elemento DOM dinamicamente.
 ## Aula 04 - Integrando com o cronômetro
 
 ### Aula 04 - Selecionando uma tarefa - Video 1
+
+Nesta aula, o instrutor ensina como lidar com a seleção de tarefas em uma aplicação chamada Fokus. Ele mostra como atualizar a descrição da tarefa em andamento e adicionar uma classe específica ao item clicado. O instrutor também explica como selecionar o parágrafo onde a descrição da tarefa deve ser preenchida e como adicionar o evento de clique nas tarefas. Além disso, ele mostra como adicionar a classe que indica que a tarefa está ativa. No próximo vídeo, ele irá mostrar como refinar o método para garantir que apenas uma única tarefa tenha a classe ativa por vez.
+
+### Aula 04 - Desselecionando uma tarefa - Video 2
+
+Nesta aula, o instrutor aborda a estratégia de garantir que apenas uma única tarefa tenha a classe ativa. Ele explica a diferença entre os métodos querySelectorAll e querySelector e demonstra como utilizar o querySelectorAll para selecionar e iterar sobre os elementos que possuem a classe ativa. O instrutor também adiciona a funcionalidade de deselecionar a tarefa selecionada e utiliza a técnica de "Early Return" para interromper a execução do código quando necessário.
+
+### Aula 04 - Comunicando o fim da atividade - Video 3
+
+Nesta aula, o instrutor explica como adicionar funcionalidades ao código do projeto "Fokus". Ele mostra como verificar se o tempo decorrido pelo timer chegou a zero e, nesse caso, emitir um alerta, tocar um som e zerar o timer. Além disso, ele ensina como criar um evento customizado chamado "FocoFinalizado" e dispará-lo quando o timer chegar a zero, permitindo que outras partes da aplicação reajam a esse evento. No próximo vídeo, será mostrado como tratar esse evento para indicar que a tarefa foi finalizada.
+
+### Aula 04 - Finalizando uma tarefa - Video 4
+
+Nesta aula, o instrutor ensina como adicionar funcionalidades ao evento customizado "FocoFinalizado" no código JavaScript. Ele mostra como adicionar um event listener para esse evento no objeto "document" e como verificar se existe uma tarefa selecionada e um elemento "li" da tarefa selecionada. Caso existam, ele remove a classe "app__section-task-list-item-active" desse elemento "li" e adiciona a classe "app__section-task-list-item-complete". Além disso, ele desabilita o botão da tarefa selecionada usando o método "setAttribute" com o atributo "disabled". O instrutor também menciona a importância de fazer um "double check" para garantir que o elemento "li" da tarefa selecionada não seja nulo. Essa implementação permite que, ao finalizar a contagem regressiva de uma tarefa, a classe e o estado do botão sejam atualizados corretamente. O próximo passo será lidar com a persistência do estado de tarefa concluída dentro do localStorage.
+
+### Aula 04 - Nessa aula, você aprendeu como:
+
+Aprendemos a adicionar e remover classes de elementos HTML para alterar sua aparência ou comportamento, como evidenciado pelo código que adiciona e remove a classe app__section-task-list-item-active;
+Compreendemos como lidar com um estado no JavaScript para rastrear a tarefa selecionada atualmente, usando variáveis como tarefaSelecionada e liTarefaSelecionada;
+Desenvolvemos uma lógica para permitir que os usuários cliquem e selecione/desselecione uma tarefa, e como responder a essas interações;
+Trabalhamos com a criação e resposta a eventos personalizados, como o evento FocoFinalizado, que é usado para marcar uma tarefa como concluída;
+Melhoramos a experiência do usuário ao fornecer feedback visual sobre a tarefa selecionada e a capacidade de marcar uma tarefa como concluída.
+
+## Aula 05 - 
+
+### Aula 05 -  - Video 1
+
