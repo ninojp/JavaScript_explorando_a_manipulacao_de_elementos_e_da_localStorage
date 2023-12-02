@@ -4,9 +4,13 @@ const btnAdicionarTarefa = document.querySelector('.app__button--add-task');
 const formAdicionarTarefa = document.querySelector('.app__form-add-task');
 const textArea = document.querySelector('.app__form-textarea');
 const ulTarefas = document.querySelector('.app__section-task-list');
+const btnCancelarTarefa = document.querySelector('.app__form-footer__button--cancel');
 
 const listaTarefas = JSON.parse(localStorage.getItem('localStoreTarefas')) || [];
-console.log(listaTarefas)
+// console.log(listaTarefas)
+function atualizarTarefas(){
+    localStorage.setItem('localStoreTarefas', JSON.stringify(listaTarefas));
+};
 
 function criarElementoTarefa(objTarefa) {
     const liElement = document.createElement('li');
@@ -24,6 +28,21 @@ function criarElementoTarefa(objTarefa) {
     
     const btnElement = document.createElement('button');
     btnElement.classList.add('app_button-edit');
+
+    btnElement.onclick = () => {
+        const novaDescricao = prompt("Qual é o novo nome da tarefa?");
+        if(novaDescricao){
+            pElement.textContent = novaDescricao;
+            objTarefa.descricao = novaDescricao;
+            atualizarTarefas();
+        }
+    };
+    // debugger;
+    // btnElement.addEventListener('click', () => {
+    // const novaDescricao = prompt('Digite o novo nome para a Tarefa');
+    // pElement.textContent = novaDescricao;
+    // });
+
     const imgElement = document.createElement('img');
     imgElement.setAttribute('src', './imagens/edit.png');
     btnElement.append(imgElement);
@@ -39,13 +58,19 @@ btnAdicionarTarefa.addEventListener('click', () => {
     formAdicionarTarefa.classList.toggle('hidden')
 });
 
+btnCancelarTarefa.addEventListener('click', () => {
+    textArea.textContent = '';
+    formAdicionarTarefa.classList.add('hidden')
+})
+
 formAdicionarTarefa.addEventListener('submit', (evento) => {
     evento.preventDefault();
     const novaTarefa = { descricao: textArea.value };
     listaTarefas.push(novaTarefa);
     const exibElementoTarefa = criarElementoTarefa(novaTarefa);
     ulTarefas.append(exibElementoTarefa);
-    localStorage.setItem('localStoreTarefas', JSON.stringify(listaTarefas));
+    // localStorage.setItem('localStoreTarefas', JSON.stringify(listaTarefas));
+    atualizarTarefas();
     textArea.value = '';
     formAdicionarTarefa.classList.add('hidden')
 });

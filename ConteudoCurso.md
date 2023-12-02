@@ -125,6 +125,47 @@ Utilizar o localStorage para armazenar e recuperar dados, permitindo persistênc
 Criar elementos utilizando o document.createElement;
 Aninhar elementos utilizando o método append.
 
-## Aula 03 - 
+## Aula 03 - Editando Tarefas
 
-### Aula 03 -  - Video 1
+### Aula 03 - Ouvindo o clique - Video 1
+
+Nesta aula, o instrutor ensina como implementar a funcionalidade de edição de tarefas na aplicação Fokus. Ele cria um botão de edição e manipula o evento de clique desse botão. Utilizando a função prompt(), o usuário pode informar o novo nome da tarefa, que é armazenado em uma variável e utilizado para atualizar o texto da tarefa no DOM. É importante ressaltar que essa atualização é apenas no DOM e não no localStorage(), que será abordado no próximo vídeo.
+
+### Aula 03 - Atualizando o localStorage - Video 2
+
+Nesta aula, o instrutor aborda a necessidade de atualizar o localStorage() quando o usuário editar uma tarefa já criada. Ele propõe uma nova estratégia, criando uma função chamada atualizarTarefas() que encapsula a lógica de atualização do localStorage. Essa função é chamada dentro do evento onclick do botão. Além disso, o instrutor também atualiza o texto da tarefa no objeto que representa a tarefa. O instrutor identifica um bug onde a tarefa fica em branco caso o usuário clique em "OK" sem digitar nada no campo de texto, mas esse problema será abordado em um próximo vídeo.
+
+### Aula 03 - Depurando código no navegador - Video 3
+
+#### DEBUGGER
+
+Usado para DEBUGAR, depurar o codigo e verificar a execução linha a linha.
+
+Nesta aula, o instrutor aborda a correção de bugs e a aplicação de técnicas de debugging no código JavaScript. Ele mostra como utilizar o console.log() para exibir mensagens no navegador e como utilizar o prompt para interagir com o usuário e obter informações. O instrutor também explica como utilizar a estrutura condicional if para verificar se uma variável possui um valor válido antes de executar determinadas ações. Além disso, ele demonstra como utilizar o debugger para depurar o código e entender o que está acontecendo. Por fim, o instrutor destaca a importância dessas ferramentas de debugging para identificar e solucionar problemas no código.
+
+### Aula 03 - Para saber mais: addEventListener('click') vs onclick
+
+Essas abordagens podem parecer semelhantes, mas têm particularidades importantes.  
+
+Diferença para o Navegador
+addEventListener: Com ele, você pode adicionar mais de um ouvinte para o mesmo evento. Imagine que você quer que o botão exiba um alerta e também mude de cor quando clicado.
+
+onclick: Se você tentar definir mais de uma ação usando onclick, a última definida é a que permanecerá, sobrescrevendo as anteriores.
+
+Diferença para o Desenvolvedor
+Flexibilidade com addEventListener: Com ele, você tem mais controle e liberdade para adicionar diversas reações a um mesmo evento, ideal para scripts ou módulos distintos.
+
+Controle simplificado com onclick: Pode parecer mais direto, mas o risco é grande em aplicações robustas! Ao sobrescrever funções inadvertidamente, você pode acabar com comportamentos inesperados.
+
+> Reflexão: Em um projeto grande, com vários desenvolvedores trabalhando e talvez até com bibliotecas externas, como garantir que não estamos sobrescrevendo um evento crucial usando onclick?
+
+### Aula 03 Conclusão - Nessa aula, você aprendeu como:
+
+Encapsular lógicas repetidas em funções, como a atualização de itens no localStorage;
+Adicionar eventos de clique diretamente a um elemento com a propriedade onclick;
+Utilizar a função prompt para obter informações diretamente do usuário;
+Atualizar conteúdo textual de um elemento DOM dinamicamente.
+
+## Aula 04 - 
+
+### Aula 04 -  - Video 1
